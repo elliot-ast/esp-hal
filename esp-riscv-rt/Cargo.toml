@@ -11,6 +11,7 @@ categories   = ["embedded", "no-std"]
 
 [dependencies]
 document-features = "0.2.10"
+r0 = "1.0.0"
 riscv             = "0.11.1"
 riscv-rt-macros   = "0.2.1"
 

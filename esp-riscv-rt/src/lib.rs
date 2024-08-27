@@ -18,7 +18,7 @@ use core::arch::global_asm;
 
 pub use riscv;
 use riscv::register::{
-    mcause,
+    mcause, mstatus,
     mtvec::{self, TrapMode},
 };
 pub use riscv_rt_macros::{entry, pre_init};
@@ -140,6 +140,7 @@ pub unsafe extern "C" fn start_trap_rust(trap_frame: *const TrapFrame) {
             if h.reserved == 0 {
                 DefaultHandler();
             } else {
+                mstatus::set_mie();
                 (h.handler)();
             }
         } else {
